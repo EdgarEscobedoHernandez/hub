@@ -9,8 +9,10 @@ Rectangle{
     width: 50
 
     color: res.color_sidebar
-
-    property alias button: button
+    id: root
+    property alias whatsappButton: whatsappButton
+    property alias trelloButton: trelloButton
+    property alias gmailButton: gmailButton
 
     GeneralResources{
         id: res
@@ -21,11 +23,41 @@ Rectangle{
 
 
         SidebarButton{
-            id: button
+            objectName: "1"
+            id: whatsappButton
             width: parent.width
+            onNewOneSelected: root.newOneSelected(objectName)
         }
 
+        SidebarButton{
+            objectName: "2"
+            id: trelloButton
+            width: parent.width
+            onNewOneSelected: root.newOneSelected(objectName)
+        }
+
+        SidebarButton{
+            objectName: "3"
+            id: gmailButton
+            width: parent.width
+            onNewOneSelected: root.newOneSelected(objectName)
+        }
+
+
+
         RowLayout{}
+    }
+
+
+    function newOneSelected(objectName){
+        switch(objectName){
+        case "1":
+            trelloButton.selected = false; gmailButton.selected = false; break;
+        case "2":
+            gmailButton.selected = false; whatsappButton.selected = false; break;
+        case "3":
+            trelloButton.selected = false; whatsappButton.selected = false; break;
+        }
     }
 
 }
