@@ -13,6 +13,9 @@ Rectangle{
     property alias whatsappButton: whatsappButton
     property alias trelloButton: trelloButton
     property alias gmailButton: gmailButton
+    property alias gmailButton2: gmailButton2
+
+    property var buttons: [whatsappButton, trelloButton, gmailButton, gmailButton2]
 
     GeneralResources{
         id: res
@@ -43,6 +46,12 @@ Rectangle{
             onNewOneSelected: root.newOneSelected(objectName)
         }
 
+        SidebarButton{
+            objectName: "4"
+            id: gmailButton2
+            width: parent.width
+            onNewOneSelected: root.newOneSelected(objectName)
+        }
 
 
         RowLayout{}
@@ -50,13 +59,10 @@ Rectangle{
 
 
     function newOneSelected(objectName){
-        switch(objectName){
-        case "1":
-            trelloButton.selected = false; gmailButton.selected = false; break;
-        case "2":
-            gmailButton.selected = false; whatsappButton.selected = false; break;
-        case "3":
-            trelloButton.selected = false; whatsappButton.selected = false; break;
+        for(var i = 0; i < buttons.length; ++i){
+            if(buttons[i].objectName !== objectName){
+                buttons[i].selected = false;
+            }
         }
     }
 

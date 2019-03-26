@@ -1,10 +1,10 @@
 import QtQuick 2.12
-import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.5
 
 import "./sidebar"
 import "./webview"
+import "./trayicon"
 
 ApplicationWindow {
     id: root
@@ -12,6 +12,8 @@ ApplicationWindow {
     width: 640
     height: 480
     title: qsTr("hub")
+
+
 
     menuBar: MenuBar{
         Menu{
@@ -24,6 +26,11 @@ ApplicationWindow {
                 }
             }
         }
+    }
+
+    TrayIcon
+    {
+
     }
 
     RowLayout{
@@ -59,6 +66,13 @@ ApplicationWindow {
             visible: sidebar.gmailButton.selected
         }
 
+        WebView{
+            webEngineView.url: "https://www.gmail.com"
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            button: sidebar.gmailButton2
+            visible: sidebar.gmailButton2.selected
+        }
     }
 
     Component.onCompleted: {
@@ -68,5 +82,7 @@ ApplicationWindow {
     GeneralResources{
         id: res
     }
+
+
 
 }
