@@ -40,16 +40,15 @@ Rectangle {
         }
 
         onNewViewRequested: {
+
+
+
             Qt.openUrlExternally(request.requestedUrl)
         }        
     }
 
 
     function loadPersistentData(url){
-
-        if(url === "https://web.whatsapp.com"){
-
-        }
 
         profile.persistentStoragePath = "./persistent/" + root.objectName
         profile.cachePath = "./cache/" + root.objectName
