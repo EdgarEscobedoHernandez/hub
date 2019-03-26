@@ -42,36 +42,41 @@ ApplicationWindow {
             Layout.fillHeight: true
         }
 
-        WebView{
-            webEngineView.url: "https://web.whatsapp.com"
+        WebView{            
             Layout.fillWidth: true
             Layout.fillHeight: true
             button: sidebar.whatsappButton
             visible: sidebar.whatsappButton.selected
+            objectName: "1"
+            Component.onCompleted: loadPersistentData("https://web.whatsapp.com")
+
         }
 
-        WebView{
-            webEngineView.url: "https://www.trello.com"
+        WebView{            
             Layout.fillWidth: true
             Layout.fillHeight: true
             button: sidebar.trelloButton
             visible: sidebar.trelloButton.selected
+            objectName: "2"
+            Component.onCompleted: loadPersistentData("https://www.trello.com")
         }
 
-        WebView{
-            webEngineView.url: "https://www.gmail.com"
+        WebView{            
             Layout.fillWidth: true
             Layout.fillHeight: true
             button: sidebar.gmailButton
             visible: sidebar.gmailButton.selected
+            objectName: "3"
+            Component.onCompleted: loadPersistentData("https://www.gmail.com")
         }
 
-        WebView{
-            webEngineView.url: "https://www.gmail.com"
+        WebView{           
             Layout.fillWidth: true
             Layout.fillHeight: true
             button: sidebar.gmailButton2
             visible: sidebar.gmailButton2.selected
+            objectName: "4"
+            Component.onCompleted: loadPersistentData("https://www.gmail.com")
         }
     }
 

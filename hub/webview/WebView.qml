@@ -5,6 +5,7 @@ import Qt.labs.platform 1.1
 import "../sidebar/sidebar_button"
 
 Rectangle {
+    id: root
     width: 640
     height: 480
 
@@ -15,7 +16,13 @@ Rectangle {
         id: webEngineView
         anchors.fill: parent                
 
-        profile:  WebEngineProfile{
+        profile: WebEngineProfile{
+            id: profile
+            httpUserAgent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/73.0.3664.3 Chrome/73.0.3664.3 Safari/537.36"
+        }
+        settings.localStorageEnabled: true
+
+        /*profile:  WebEngineProfile{
             httpUserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
 
             onDownloadRequested: {
@@ -23,12 +30,8 @@ Rectangle {
                 console.log("Path de descarga:", path)
                 download.path = StandardPaths.writableLocation(StandardPaths.DownloadLocation)
                 download.accept()
-            }
-
-            persistentCookiesPolicy: WebEngineProfile.ForcePersistentCookies
-            persistentStoragePath: "/home/edgar/Escritorio/web-information/persistent.dat"
-            cachePath: "/home/edgar/Escritorio/web-information/cache.dat"
-        }
+            }            
+        }*/
 
         onIconChanged: {
             if(button !== null && button !== undefined){
@@ -38,14 +41,23 @@ Rectangle {
 
         onNewViewRequested: {
             Qt.openUrlExternally(request.requestedUrl)
-        }
-
-        Component.onCompleted: {
-
-        }
+        }        
     }
 
 
+    function loadPersistentData(url){
+
+        if(url === "https://web.whatsapp.com"){
+
+        }
+
+        profile.persistentStoragePath = "./persistent/" + root.objectName
+        profile.cachePath = "./cache/" + root.objectName
+        //profile.persistentCookiesPolicy = WebEngineProfile.ForcePersistentCookies
+        //profile.storageName = root.objectName
+        profile.offTheRecord = false
+        webEngineView.url = url
+    }
 }
 
 
