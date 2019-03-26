@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtWebEngine 1.8
 import Qt.labs.platform 1.1
+
 import "../sidebar/sidebar_button"
 
 Rectangle {
@@ -23,6 +24,10 @@ Rectangle {
                 download.path = StandardPaths.writableLocation(StandardPaths.DownloadLocation)
                 download.accept()
             }
+
+            persistentCookiesPolicy: WebEngineProfile.ForcePersistentCookies
+            persistentStoragePath: "./persistent"
+            cachePath: "./cache"
         }
 
         onIconChanged: {
@@ -35,6 +40,9 @@ Rectangle {
             Qt.openUrlExternally(request.requestedUrl)
         }
 
+        Component.onCompleted: {
+
+        }
     }
 
 
