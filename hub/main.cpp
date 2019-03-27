@@ -5,11 +5,18 @@
 #include <QQuickStyle>
 #include <QWebEngineProfile>
 
+#include "filehandler.h"
+#include "services.h"
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QApplication app(argc, argv);
+
+    //REGISTROS
+    qmlRegisterType<FileHandler>("hub.file", 1, 0, "FileHandler");
+    qmlRegisterType<Services>("hub.services", 1, 0, "Services");
 
     QQuickStyle::setStyle("Fusion");
     QtWebEngine::initialize();

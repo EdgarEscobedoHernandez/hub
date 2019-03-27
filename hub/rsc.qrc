@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>src/img/logo/logo.svg</file>
         <file>src/img/logo/tray-icon.svg</file>
+        <file>src/img/services-logo/trello.svg</file>
+        <file>src/img/services-logo/WhatsApp.svg</file>
     </qresource>
 </RCC>

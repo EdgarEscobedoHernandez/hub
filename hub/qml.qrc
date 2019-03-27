@@ -6,5 +6,6 @@
         <file>sidebar/sidebar_button/SidebarButton.qml</file>
         <file>GeneralResources.qml</file>
         <file>trayicon/TrayIcon.qml</file>
+        <file>notifications/Notification.qml</file>
     </qresource>
 </RCC>

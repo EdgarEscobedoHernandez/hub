@@ -10,8 +10,6 @@ Item{
     property int margin_icon: 7
 
     property int radius: 7
-
-
 }
 
 

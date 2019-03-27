@@ -2,7 +2,11 @@ import QtQuick 2.0
 import QtWebEngine 1.8
 import Qt.labs.platform 1.1
 
+import hub.services 1.0
+import hub.file 1.0
+
 import "../sidebar/sidebar_button"
+
 
 Rectangle {
     id: root
@@ -11,6 +15,8 @@ Rectangle {
 
     property SidebarButton button    
     property alias webEngineView: webEngineView
+    property int serviceType: Services.WHATSAPP
+
 
     WebEngineView{
         id: webEngineView
@@ -37,18 +43,28 @@ Rectangle {
             if(button !== null && button !== undefined){
                 button.icon = icon
             }
+
+            possibleNotification(serviceType)
         }
 
         onNewViewRequested: {
-
-
-
             Qt.openUrlExternally(request.requestedUrl)
         }        
+
+
+
     }
 
 
-    function loadPersistentData(url){
+    function loadURL(url){
+
+        //Si es un servicio de whatsapp se tiene que limpiar el storage por que si no no carga
+        if(serviceType === Services.WHATSAPP){
+            var success = fileHandler.cleanWhatsappStorage("./persistent/" + root.objectName)
+            if(!success){
+                console.log("No se pudo borrar el storage de whatsapp")
+            }
+        }
 
         profile.persistentStoragePath = "./persistent/" + root.objectName
         profile.cachePath = "./cache/" + root.objectName
@@ -56,6 +72,12 @@ Rectangle {
         //profile.storageName = root.objectName
         profile.offTheRecord = false
         webEngineView.url = url
+    }
+
+    signal possibleNotification(int service)
+
+    FileHandler{
+        id: fileHandler
     }
 }
 

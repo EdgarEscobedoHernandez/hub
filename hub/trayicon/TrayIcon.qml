@@ -1,19 +1,19 @@
-import QtQuick 2.0
+import QtQuick 2.12
 import Qt.labs.platform 1.1
 
 //TRAY ICON
 SystemTrayIcon{
     id: trayIcon
-    visible: true
-
     iconSource: "qrc:/src/img/logo/tray-icon.svg"
+    tooltip: qsTr("hub")
+    visible: true
 
     menu: Menu{
         MenuItem{
             text: qsTr("Show")
 
             onTriggered: {
-                root.show()
+                root.requestActivate()
             }
         }
 
@@ -24,4 +24,5 @@ SystemTrayIcon{
             }
         }
     }
+
 }
