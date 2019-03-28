@@ -93,7 +93,6 @@ ApplicationWindow {
 
     Component.onCompleted: {
         sidebar.whatsappButton.selected = true
-        notification.show()
     }
 
     GeneralResources{
@@ -108,18 +107,12 @@ ApplicationWindow {
             return
         }
 
-        switch(service){
-        case Services.WHATSAPP:
-            trayIcon.showMessage("WhatsApp", qsTr("New possible messages"), "qrc:/src/img/services-logo/WhatsApp.svg", 5000); break;
+        trayIcon.iconSource = "qrc:/src/img/logo/tray-icon-notify.svg"
+    }
+
+    onVisibilityChanged: {
+        if(visible){
+            trayIcon.iconSource = "qrc:/src/img/logo/tray-icon.svg"
         }
     }
-
-    Notification{
-        id: notification
-        height: 50
-        width: 260
-        //x: ScreenInfo.desktopAvailableWidth - width - res.margin
-        //y: height + res.margin
-    }
-
 }

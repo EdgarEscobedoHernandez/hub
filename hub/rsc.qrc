@@ -4,5 +4,6 @@
         <file>src/img/logo/tray-icon.svg</file>
         <file>src/img/services-logo/trello.svg</file>
         <file>src/img/services-logo/WhatsApp.svg</file>
+        <file>src/img/logo/tray-icon-notify.svg</file>
     </qresource>
 </RCC>

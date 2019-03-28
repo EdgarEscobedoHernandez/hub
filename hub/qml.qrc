@@ -7,5 +7,6 @@
         <file>GeneralResources.qml</file>
         <file>trayicon/TrayIcon.qml</file>
         <file>notifications/Notification.qml</file>
+        <file>test.js</file>
     </qresource>
 </RCC>
