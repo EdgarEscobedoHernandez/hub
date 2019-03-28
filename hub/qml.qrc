@@ -1,5 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>sidebar/Sidebar.qml</file>
+        <file>webview/WebView.qml</file>
+        <file>sidebar/sidebar_button/SidebarButton.qml</file>
+        <file>GeneralResources.qml</file>
+        <file>trayicon/TrayIcon.qml</file>
+        <file>notifications/Notification.qml</file>
+        <file>test.js</file>
     </qresource>
 </RCC>
