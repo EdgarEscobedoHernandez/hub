@@ -1,2 +1,2 @@
 # hub
-HUB is like franz but without the anoying message telling you to pay for it
+HUB is just like Franz, but we will not ask you to pay
